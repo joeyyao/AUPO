@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.1",
+  "currency": "AUD",
+  "origin": {
+    "postcode": "2111",
+    "suburb": "Ryde",
+    "state": "NSW",
+    "country": "AU"
+  },
+  "method": "weight_and_volume_formula",
+  "description": "Deterministic Australia Post eParcel-style estimate. Billable weight per line = max(actual weight incl. packaging, cubing weight LxWxH/5000). A flat base fee covers the first 5 kg, then a per-kg rate applies. A state surcharge applies when the destination is outside the dispatch state and a remote surcharge applies to remote postcode prefixes. Every number below is configurable so no fee is hard-coded in business logic.",
+  "gst_treatment": "Shipment fee is treated as GST-exclusive. The brief defines Total = Subtotal + GST + Shipment Fee with GST at 10% of the order subtotal only, so the courier charge is not taxed a second time.",
+  "rules": {
+    "base_fee_aud": 8.95,
+    "included_weight_kg": 5.0,
+    "per_extra_kg_aud": 1.1,
+    "extra_weight_rounding": "ceil_to_kg",
+    "minimum_billable_weight_kg": 0.5,
+    "packaging_weight_g_per_unit": 40,
+    "cubic_divisor": 5000,
+    "net_content_min_g": 1.0,
+    "net_content_max_g": 200.0,
+    "interstate_surcharge_aud": 4.55,
+    "remote_surcharge_aud": 6.5,
+    "remote_postcode_prefixes": ["08", "6"]
+  },
+  "provider_rules": {
+    "auspost": {
+      "supported": true,
+      "chargeable": true,
+      "reason": "Estimated with the domestic formula above; the live Australia Post pricing API is not called."
+    },
+    "tnt": {
+      "supported": false,
+      "chargeable": false,
+      "fee_aud": 0.0,
+      "reason": "TNT integration is optional bonus work and has not been implemented, so the TNT-related shipment fee is displayed as A$0.00 as permitted by the brief."
+    }
+  }
+}

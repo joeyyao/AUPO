@@ -1,0 +1,131 @@
+{
+  "schema_version": "1.0",
+  "notes": [
+    "Order 1 and Order 2 are the sample orders supplied in the assessment brief.",
+    "PO-20251205-00088, PO-20251208-00091 and PO-20251210-00095 are additional TEST ORDERS created by the candidate to exercise missing SKU matches, invalid quantities and an unavailable courier integration. They are documented in README.md.",
+    "Business logic never hard-codes an order number, SKU, price or total; every value below is read at runtime."
+  ],
+  "orders": [
+    {
+      "order_no": "PO-20251130-00072",
+      "order_date": "2025-11-30",
+      "status": "Completed",
+      "company": "V22 Dispensary",
+      "customer": {
+        "name": "Jason Hu",
+        "phone": "0481 735 488",
+        "email": "Jason@aerishealth.au"
+      },
+      "shipping_address": {
+        "line1": "125 Toorak Road",
+        "suburb": "South Yarra",
+        "state": "VIC",
+        "postcode": "3141",
+        "country": "AU"
+      },
+      "items": [
+        { "sku": "TBAMET10", "quantity": 3, "tracking_ref": "Track 1" },
+        { "sku": "TBAMET28", "quantity": 1, "tracking_ref": "Track 1" },
+        { "sku": "TBOPAL28", "quantity": 1, "tracking_ref": "Track 1" },
+        { "sku": "HARNIG", "quantity": 4, "tracking_ref": "Track 1" },
+        { "sku": "LELCBD100", "quantity": 6, "tracking_ref": "Track 1" }
+      ]
+    },
+    {
+      "order_no": "PO-20251203-00046",
+      "order_date": "2025-12-03",
+      "status": "In Transit",
+      "company": "Cann Life Dispensary",
+      "customer": {
+        "name": "Bella Dari",
+        "phone": "0411 547 288",
+        "email": "Bella@aerishealth.au"
+      },
+      "shipping_address": {
+        "line1": "381 Smith Street",
+        "suburb": "Fitzroy",
+        "state": "VIC",
+        "postcode": "3065",
+        "country": "AU"
+      },
+      "items": [
+        { "sku": "AURPUR10", "quantity": 10, "tracking_ref": "Track 2" },
+        { "sku": "HALGEO15", "quantity": 1, "tracking_ref": "Track 3" },
+        { "sku": "MCMW10", "quantity": 2, "tracking_ref": "Track 3" },
+        { "sku": "MCBO30", "quantity": 3, "tracking_ref": "Track 3" }
+      ]
+    },
+    {
+      "order_no": "PO-20251205-00088",
+      "order_date": "2025-12-05",
+      "status": "In Transit",
+      "company": "Harbour Health Pharmacy",
+      "customer": {
+        "name": "Amelia Nguyen",
+        "phone": "0402 118 664",
+        "email": "amelia.nguyen@example.com.au"
+      },
+      "shipping_address": {
+        "line1": "17 Church Street",
+        "suburb": "Parramatta",
+        "state": "NSW",
+        "postcode": "2150",
+        "country": "AU"
+      },
+      "items": [
+        { "sku": "NUBKIKP10", "quantity": 2, "tracking_ref": "Track 4" },
+        { "sku": "WLFLO015", "quantity": 3, "tracking_ref": "Track 4" },
+        { "sku": "SKU-NOT-IN-CATALOGUE", "quantity": 1, "tracking_ref": "Track 4" }
+      ],
+      "test_order_purpose": "Missing SKU match: SKU-NOT-IN-CATALOGUE exists on the order but not in product_list."
+    },
+    {
+      "order_no": "PO-20251208-00091",
+      "order_date": "2025-12-08",
+      "status": "Pending",
+      "company": "Brisbane Wellness Collective",
+      "customer": {
+        "name": "Daniel Okafor",
+        "phone": "0433 902 771",
+        "email": "daniel.okafor@example.com.au"
+      },
+      "shipping_address": {
+        "line1": "88 Brunswick Street",
+        "suburb": "Fortitude Valley",
+        "state": "QLD",
+        "postcode": "4006",
+        "country": "AU"
+      },
+      "items": [
+        { "sku": "GROOGKU10", "quantity": 0, "tracking_ref": "Track 5" },
+        { "sku": "GROSTRC10", "quantity": -2, "tracking_ref": "Track 5" },
+        { "sku": "GROWAFB10", "quantity": 1, "tracking_ref": "Track 5" }
+      ],
+      "test_order_purpose": "Invalid quantities (0 and -2) must be rejected per line without breaking the whole order."
+    },
+    {
+      "order_no": "PO-20251210-00095",
+      "order_date": "2025-12-10",
+      "status": "Completed",
+      "company": "Perth Apothecary Group",
+      "customer": {
+        "name": "Grace Whitfield",
+        "phone": "0455 771 203",
+        "email": "grace.whitfield@example.com.au"
+      },
+      "shipping_address": {
+        "line1": "5 Hay Street",
+        "suburb": "Perth",
+        "state": "WA",
+        "postcode": "6000",
+        "country": "AU"
+      },
+      "items": [
+        { "sku": "ENCBGBS30", "quantity": 2, "tracking_ref": "Track 6" },
+        { "sku": "FLW0012", "quantity": 1, "tracking_ref": "Track 6" },
+        { "sku": "FLW0013", "quantity": 4, "tracking_ref": "Track 6" }
+      ],
+      "test_order_purpose": "Courier not implemented: Track 6 is a TNT consignment, so tracking is reported unavailable and the TNT shipment fee is A$0.00."
+    }
+  ]
+}

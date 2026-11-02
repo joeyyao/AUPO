@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0",
+  "notes": [
+    "Track 1 - Track 3 are the tracking references supplied in the assessment brief.",
+    "Track 4 - Track 6 belong to the additional test orders. Track 4 and Track 5 reuse Australia Post test numbers published in the FAQ; they are test data only and do not represent live shipments.",
+    "provider = 'auspost' is polled live through the Australia Post testbed API. provider = 'tnt' is intentionally not implemented (optional bonus work) and always resolves to an unavailable state."
+  ],
+  "shipments": [
+    {
+      "tracking_ref": "Track 1",
+      "tracking_no": "2FWZ50008569",
+      "carrier_name": "StarTrack / Australia Post",
+      "provider": "auspost",
+      "test_data": false
+    },
+    {
+      "tracking_ref": "Track 2",
+      "tracking_no": "2FWZ50008645",
+      "carrier_name": "StarTrack / Australia Post",
+      "provider": "auspost",
+      "test_data": false
+    },
+    {
+      "tracking_ref": "Track 3",
+      "tracking_no": "305506914",
+      "carrier_name": "TNT",
+      "provider": "tnt",
+      "test_data": false
+    },
+    {
+      "tracking_ref": "Track 4",
+      "tracking_no": "2FWZ50020500",
+      "carrier_name": "StarTrack / Australia Post",
+      "provider": "auspost",
+      "test_data": true
+    },
+    {
+      "tracking_ref": "Track 5",
+      "tracking_no": "RBXZ50016112",
+      "carrier_name": "StarTrack / Australia Post",
+      "provider": "auspost",
+      "test_data": true
+    },
+    {
+      "tracking_ref": "Track 6",
+      "tracking_no": "305506915",
+      "carrier_name": "TNT",
+      "provider": "tnt",
+      "test_data": true
+    }
+  ]
+}

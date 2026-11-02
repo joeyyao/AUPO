@@ -1,0 +1,44 @@
+# ---- credentials: never commit ----
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# ---- python ----
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+
+# ---- node / frontend ----
+node_modules/
+frontend/dist/
+frontend/.vite/
+npm-debug.log*
+yarn-error.log*
+
+# ---- runtime artefacts ----
+logs/
+*.log
+.tmp/
+tracking_cache.json
+
+# ---- editors / OS ----
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# ---- AI assistant / session artefacts ----
+# .reasonix holds agent session logs and copied attachments (the assessment brief
+# itself contains testbed credentials), so it must never be published.
+.reasonix/
+.claude/
+.cursor/
+.aider*
+
